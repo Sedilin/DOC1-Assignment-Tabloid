@@ -16,8 +16,8 @@ jobs:
     steps: 
       - uses: actions/checkout@4
       - name: Start Minikube
-      id: minikube
-      uses: medyagh/setup-minikube@latest
+        id: minikube
+        uses: medyagh/setup-minikube@latest
       - name: Try the cluster !
         run: kubectl get pods -A
       - name: Build Image
