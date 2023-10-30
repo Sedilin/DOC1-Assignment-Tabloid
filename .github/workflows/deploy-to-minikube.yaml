@@ -14,7 +14,7 @@ jobs:
     # Run on Ubuntu using the latest version
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@3
+      - uses: actions/checkout@v4
       - name: Start Minikube
         id: minikube
         uses: medyagh/setup-minikube@latest
