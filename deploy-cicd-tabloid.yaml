@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-tabloid
+  labels:
+    app: docker-tabloid
+spec:
+  replicas: 2 # pod count
+  selector:
+    matchLabels:
+      app: docker-tabloid
+  template:
+    metadata:
+      name: docker-tabloid
+      labels:
+        app: docker-tabloid
+    spec:
+      containers:
+        - name: docker-tabloid
+          image: docker-tabloid:0.0.1
+          imagePullPolicy: Never #IfNotPresent
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-tabloid
+  labels:
+    app:  docker-tabloid
+spec:
+  selector:
+    app: docker-tabloid
+  ports:
+    - protocol: "TCP"
+      port: 8080 # where the service is running
+      targetPort: 8080 # the port exposed by the service
+  type: NodePort # type of service
