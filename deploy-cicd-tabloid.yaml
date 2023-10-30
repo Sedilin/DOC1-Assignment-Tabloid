@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: cicd-tabloid
-          image: local/cicd-tabloid
+          image: cicd-tabloid:latest
           imagePullPolicy: Never #IfNotPresent
           ports:
             - containerPort: 8080
