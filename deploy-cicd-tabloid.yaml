@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docker-tabloid
+  name: cicd-tabloid
   labels:
-    app: docker-tabloid
+    app: cicd-tabloid
 spec:
   replicas: 2 # pod count
   selector:
     matchLabels:
-      app: docker-tabloid
+      app: cicd-tabloid
   template:
     metadata:
-      name: docker-tabloid
+      name: cicd-tabloid
       labels:
-        app: docker-tabloid
+        app: cicd-tabloid
     spec:
       containers:
-        - name: docker-tabloid
-          image: docker-tabloid:0.0.1
+        - name: cicd-tabloid
+          image: cicd-tabloid:0.0.1
           imagePullPolicy: Never #IfNotPresent
           ports:
             - containerPort: 8080
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: docker-tabloid
+  name: cicd-tabloid
   labels:
-    app:  docker-tabloid
+    app:  cicd-tabloid
 spec:
   selector:
-    app: docker-tabloid
+    app: cicd-tabloid
   ports:
     - protocol: "TCP"
       port: 8080 # where the service is running
